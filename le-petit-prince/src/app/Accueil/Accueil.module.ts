@@ -3,10 +3,10 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { DatesPage } from './Dates.page';
+import { AccueilPage } from './Accueil.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
-import { DatesPageRoutingModule } from './Dates-routing.module';
+import { AccueilPageRoutingModule } from './Accueil-routing.module';
 
 @NgModule({
   imports: [
@@ -14,9 +14,8 @@ import { DatesPageRoutingModule } from './Dates-routing.module';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    RouterModule.forChild([{ path: '', component: DatesPage }]),
-    DatesPageRoutingModule,
+    AccueilPageRoutingModule,
   ],
-  declarations: [DatesPage]
+  declarations: [AccueilPage]
 })
-export class DatesPageModule {}
+export class AccueilPageModule {}

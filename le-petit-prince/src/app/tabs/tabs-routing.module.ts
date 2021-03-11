@@ -16,19 +16,19 @@ const routes: Routes = [
         loadChildren: () => import('../Galeries/Galeries.module').then(m => m.GaleriesPageModule)
       },
       {
-        path: 'Dates',
-        loadChildren: () => import('../Dates/Dates.module').then(m => m.DatesPageModule)
+        path: 'Accueil',
+        loadChildren: () => import('../Accueil/Accueil.module').then(m => m.AccueilPageModule)
       },
       {
         path: '',
-        redirectTo: '/tabs/Articles',
+        redirectTo: '/tabs/Accueil',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/Galeries',
+    redirectTo: '/tabs/Accueil',
     pathMatch: 'full'
   }
 ];
