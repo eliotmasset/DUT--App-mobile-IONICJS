@@ -7,17 +7,17 @@
 </ion-header>
 
 <ion-content *ngIf="datas" [fullscreen]="true">
-
+  <ion-searchbar placeholder="Rechercher un article" animated></ion-searchbar>
   <ion-card *ngFor="let article of datas.articles">
-    <img *ngIf="article.photos[0]!=undefined" src="http://www.sebastien-thon.fr/cours/M4104Cip/projet/images/{{article.photos[0].image}}" />
+    <div class="img-container"><img *ngIf="article.photos[0]!=undefined" src="http://www.sebastien-thon.fr/cours/M4104Cip/projet/images/{{article.photos[0].image}}" /></div>
     <ion-card-header>
       <ion-card-subtitle>{{article.categorie}}</ion-card-subtitle>
       <ion-card-title>{{article.titre}}</ion-card-title>
     </ion-card-header>
   
     <ion-card-content>
-      {{article.texte}}
+      {{article.texte}}<br/>
+      <ion-button color="primary" slot="end">Ajouter aux favoris</ion-button>
     </ion-card-content>
   </ion-card>
-  <br><br><br><br><br><br><br><br><br>
 </ion-content>
