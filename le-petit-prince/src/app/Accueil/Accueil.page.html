@@ -7,13 +7,24 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-    <ion-list>
+    <ion-list *ngIf="datas">
       <ion-list-header>
         <ion-label>Bienvenue</ion-label>
       </ion-list-header>
       <img id="main-img" src="../../assets/icon/full.png" width="150"/>
       <ion-item>
-      	<p>Bonjour et bienvenue dans l'application du petit Prince.</p>
-  	  </ion-item>
+          <p>Bonjour et bienvenue dans l'application du petit Prince.</p>
+      </ion-item>
+      <ion-list-header>
+        <ion-label>Dates importantes</ion-label>
+      </ion-list-header>
+        <ion-item *ngFor="let date of datas.dates">
+            <ion-label>
+              <h2>{{toDate(date.date)}}</h2>
+              <h3>{{date.titre}}</h3>
+              <p>Classe {{date.classe}}</p>
+              <p>{{date.texte}}</p>
+             </ion-label>
+        </ion-item>
     </ion-list>
 </ion-content>

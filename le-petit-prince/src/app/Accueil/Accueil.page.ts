@@ -10,9 +10,15 @@ export class AccueilPage {
 
   datas:any;
 
+  toDate(date)
+  {
+    return new Date(date).toLocaleString();
+  }
+
   constructor(private http: HttpClient) {
     this.http.get('http://www.sebastien-thon.fr/cours/M4104Cip/projet/index.php?login=classe1&mdp=mdp1')
                    .subscribe((data) => {
+                     this.datas=data;
     });
   }
 
