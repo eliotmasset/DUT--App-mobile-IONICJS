@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="loging()" [formGroup]="user_group">
+    <ion-item>
+      <ion-label>Login</ion-label>
+      <ion-input type="text" formControlName="login" name="login"></ion-input>
+    </ion-item>
+    <ng-container *ngFor="let validation of validation_messages.login">
+      <div class="error-message" *ngIf="user_group.get('login').hasError(validation.type) && (user_group.get('login').dirty || user_group.get('login').touched)">
+        <ion-icon name="information-circle-outline"></ion-icon>{{ validation.message }}
+      </div>
+    </ng-container>
+    <ion-item>
+      <ion-label>Mot de passe</ion-label>
+      <ion-input type="password" formControlName="mdp" name="mdp"></ion-input>
+    </ion-item>
+    <ng-container *ngFor="let validation of validation_messages.mdp">
+      <div class="error-message" *ngIf="user_group.get('mdp').hasError(validation.type) && (user_group.get('mdp').dirty || user_group.get('mdp').touched)">
+        <ion-icon name="information-circle-outline"></ion-icon>{{ validation.message }}
+      </div>
+    </ng-container>
+    <button ion-button type="submit" [disabled]="!user_group.valid" block>Login</button>
+  </form>
+</ion-content>

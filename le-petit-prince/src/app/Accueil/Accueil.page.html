@@ -18,7 +18,7 @@
       <ion-list-header>
         <ion-label>Dates importantes</ion-label>
       </ion-list-header>
-        <ion-item *ngFor="let date of datas.dates">
+        <ion-item *ngFor="let date of datas.dates.reverse()">
             <ion-label>
               <h2>{{toDate(date.date)}}</h2>
               <h3>{{date.titre}}</h3>
@@ -27,4 +27,11 @@
              </ion-label>
         </ion-item>
     </ion-list>
+    
+    <ion-title> Contact </ion-title>
+  <p>École le Petit Prince<br>
+    1, rue des écoles<br>
+    13000 Saint Exupéry<br>
+    Tél : 0412345678<br>
+    Mail : contact@lepetitprince.fr</p>
 </ion-content>
