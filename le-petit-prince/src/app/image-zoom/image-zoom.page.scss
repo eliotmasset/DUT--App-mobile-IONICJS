@@ -1,0 +1,21 @@
+ion-content {
+    align-items: baseline;
+    background-color: transparent;
+    --background: #ffffff00;
+}
+img {
+    width: 100%;
+}
+.img_modal_zoom
+{
+    width: 100%;
+}
+.button_modal_zoom
+{
+    float: right;
+    transform: translateY(120%);
+}
+#img_modal {
+    margin-top:50vh;
+    transform: translateY(-50%);
+}

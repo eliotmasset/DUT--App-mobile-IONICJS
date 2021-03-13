@@ -12,7 +12,7 @@
       <h1>{{galerie.titre}}</h1>
       <div class='collection'>
         <div class="collection-item" *ngFor="let photo of galerie.photos">
-          <img *ngIf="photo.image!=undefined" src="http://www.sebastien-thon.fr/cours/M4104Cip/projet/images/{{photo.image}}" />
+          <img  (click)="zoom(photo.image)" *ngIf="photo.image!=undefined" src="http://www.sebastien-thon.fr/cours/M4104Cip/projet/images/{{photo.image}}" />
           <ion-label>{{photo.legende}}</ion-label>
         </div>
       </div>
