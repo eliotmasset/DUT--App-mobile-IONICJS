@@ -1,0 +1,28 @@
+/* Without setting height the slides will take up the height of the slide's content */
+ion-slides {
+    height: 100%;
+  }
+
+  ion-slide {
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-start;
+    overflow: auto;
+    align-content: flex-start;
+  }
+  .collection {
+      column-count: 2;
+      column-gap: 0;
+  }
+  .collection-item {
+      display: inline-block;
+      margin: 4px 9px;
+      box-sizing: content-box;
+      overflow: hidden;
+      border-radius: 5px;
+      box-shadow: 0 0 2px grey;
+      img {
+          border-radius: 5px 5px 0 0;
+          width: calc(100% +2px);
+      }
+  }

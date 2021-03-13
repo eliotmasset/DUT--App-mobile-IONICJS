@@ -14,7 +14,6 @@ export class ArticlesPage {
   constructor(private http: HttpClient) {
     this.http.get('http://www.sebastien-thon.fr/cours/M4104Cip/projet/index.php?login=classe1&mdp=mdp1')
                    .subscribe((data) => {
-                     console.log(data);
                       this.datas = data;
     });
   }
