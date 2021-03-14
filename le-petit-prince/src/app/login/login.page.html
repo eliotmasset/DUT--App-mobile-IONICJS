@@ -1,13 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <ion-title>Authentification</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <form (ngSubmit)="loging()" [formGroup]="user_group">
     <ion-item>
-      <ion-label>Login</ion-label>
+      <ion-label><strong>Login</strong></ion-label>
       <ion-input type="text" formControlName="login" name="login"></ion-input>
     </ion-item>
     <ng-container *ngFor="let validation of validation_messages.login">
@@ -16,7 +16,7 @@
       </div>
     </ng-container>
     <ion-item>
-      <ion-label>Mot de passe</ion-label>
+      <ion-label><strong>Mot de passe</strong></ion-label>
       <ion-input type="password" formControlName="mdp" name="mdp"></ion-input>
     </ion-item>
     <ng-container *ngFor="let validation of validation_messages.mdp">

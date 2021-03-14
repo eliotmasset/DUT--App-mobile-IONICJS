@@ -9,7 +9,7 @@
 <ion-content [fullscreen]="true">
     <ion-list *ngIf="datas">
       <ion-list-header>
-        <ion-label>Bienvenue</ion-label>
+        <ion-label>Le petit Prince</ion-label>
       </ion-list-header>
       <img id="main-img" src="../../assets/icon/full.png" width="150"/>
       <ion-item>
@@ -26,12 +26,15 @@
               <p>{{date.texte}}</p>
              </ion-label>
         </ion-item>
+        <ion-list-header>
+          <ion-label>Contact</ion-label>
+        </ion-list-header>
+        <ion-item>
+            <p>École le Petit Prince<br>
+               1, rue des écoles<br>
+               13000 Saint Exupéry<br>
+               <em>Tél : 0412345678<br>
+               Mail : contact@lepetitprince.fr</em></p>
+        </ion-item>
     </ion-list>
-    
-    <ion-title> Contact </ion-title>
-  <p>École le Petit Prince<br>
-    1, rue des écoles<br>
-    13000 Saint Exupéry<br>
-    Tél : 0412345678<br>
-    Mail : contact@lepetitprince.fr</p>
 </ion-content>

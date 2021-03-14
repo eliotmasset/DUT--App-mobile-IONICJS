@@ -13,14 +13,14 @@ export class LoginPage implements OnInit {
 
   validation_messages = {
     'login': [
-        { type: 'required', message: 'Le login est requis.' },
-        { type: 'minlength', message: 'Le login doit avoir un minimum de 3 charactères.' },
-        { type: 'maxlength', message: 'Le login doit avoir un maximum de 10 charactères.' },
+        { type: 'required', message: 'Le login est obligatoire.' },
+        { type: 'minlength', message: 'Le login doit faire au moins 3 caractères.' },
+        { type: 'maxlength', message: 'Le login doit faire au maximum 10 caractères.' },
       ],
       'mdp': [
-        { type: 'required', message: 'Le mot de passe est requis.' },
-        { type: 'minlength', message: 'Le mot de passe doit avoir un minimum de 3 charactères.' },
-        { type: 'maxlength', message: 'Le mot de passe doit avoir un maximum de 10 charactères.' },
+        { type: 'required', message: 'Le mot de passe est obligatoire.' },
+        { type: 'minlength', message: 'Le mot de passe doit faire au moins 3 caractères.' },
+        { type: 'maxlength', message: 'Le mot de passe doit faire au maximum 10 caractères.' },
       ],
     }
 
@@ -64,8 +64,8 @@ export class LoginPage implements OnInit {
       message: text,
       position: 'bottom',
       buttons: [ {
-          text: 'Cancel',
-          role: 'cancel',
+          text: 'Fermer',
+          role: 'fermer',
           handler: () => {}
         }
       ]
@@ -77,7 +77,7 @@ export class LoginPage implements OnInit {
     let url = "http://www.sebastien-thon.fr/cours/M4104Cip/projet/index.php?connexion&login="+this.user_group.get("login").value+"&mdp="+this.user_group.get("mdp").value;
     this.http.get(url)
                    .subscribe((data) => {
-                    data["resultat"]!= undefined ? this.auth() : this.toast("Erreur","Le login ou le mot de passe ne correspondent pas !");
+                    data["resultat"]!= undefined ? this.auth() : this.toast("Erreur","Login ou mot de passe incorrect !");
     });
   }
 
