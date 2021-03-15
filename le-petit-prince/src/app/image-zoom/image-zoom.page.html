@@ -1,6 +1,14 @@
  <ion-content>
    <div id="img_modal">
-    <ion-button class="button_modal_zoom" (click)="close()">Fermer</ion-button>
+    <ion-fab vertical="top" horizontal="end" edge slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="settings"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="bottom">
+        <ion-fab-button (click)="download()"><ion-icon name="cloud-download-outline"></ion-icon></ion-fab-button>
+        <ion-fab-button (click)="close()"><ion-icon name="exit-outline"></ion-icon></ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
     <img class="img_modal_zoom" src={{url}} />
    </div>
  </ion-content>
