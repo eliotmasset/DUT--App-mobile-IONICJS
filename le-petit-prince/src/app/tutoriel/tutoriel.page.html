@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tutoriel
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+      <h1>Bienvenue</h1>
+      
+    </ion-slide>
+    <ion-slide>
+      <h1>L'accueil</h1>
+      
+    </ion-slide>
+    <ion-slide>
+      <h1>Les articles</h1>
+      
+    </ion-slide>
+    <ion-slide>
+      <h1>La gallerie</h1>
+      
+    </ion-slide>
+    <ion-slide>
+      <h1>Débuter</h1><br>
+      <ion-button (click)="this.begin()" color="secondary" expand="block">Commencer</ion-button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

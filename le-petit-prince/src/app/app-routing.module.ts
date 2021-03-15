@@ -21,7 +21,11 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },  {
+    path: 'tutoriel',
+    loadChildren: () => import('./tutoriel/tutoriel.module').then( m => m.TutorielPageModule)
   },
+
 ];
 @NgModule({
   imports: [

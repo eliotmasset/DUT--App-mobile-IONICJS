@@ -78,7 +78,7 @@ export class LoginPage implements OnInit {
     this.storage.set('remind', remind);
     this.storage.set('login', login);
     this.storage.set('mdp',mdp);
-    this.router.navigate(['/tabs']);
+    this.router.navigate(['/tutoriel']);
   }
 
   async toast(head,text)
