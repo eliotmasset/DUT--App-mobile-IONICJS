@@ -35,6 +35,12 @@ export class AccueilPage {
     return new Date(date).toLocaleString();
   }
 
+  async deconnexion()
+  { 
+    this.storage.clear();
+    this.router.navigate(['/']);
+  }
+
   constructor(private router: Router,private storage: Storage,private http: HttpClient) {
     storage.get('login').then((valeur) => {
       let regex = new RegExp(/classe([0-9]{1})/gm, 'i');
