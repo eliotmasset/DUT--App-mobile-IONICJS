@@ -23,7 +23,8 @@
       <div class="error-message" *ngIf="user_group.get('mdp').hasError(validation.type) && (user_group.get('mdp').dirty || user_group.get('mdp').touched)">
         <ion-icon name="information-circle-outline"></ion-icon>{{ validation.message }}
       </div>
-    </ng-container>
+    </ng-container> <br>
+    <ion-checkbox slot="start" formControlName="remind" name="remind"></ion-checkbox>Se souvenir de moi  <br> <br>
     <button ion-button type="submit" [disabled]="!user_group.valid" block>Login</button>
   </form>
 </ion-content>

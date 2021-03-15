@@ -9,25 +9,26 @@
 <ion-content [fullscreen]="true">
     <ion-list *ngIf="datas">
       <ion-list-header>
-        <ion-label>Le petit Prince</ion-label>
+        <ion-label><h1><strong>Le petit Prince</strong></h1></ion-label>
       </ion-list-header>
       <img id="main-img" src="../../assets/icon/full.png" width="150"/>
       <ion-item>
           <p>Bonjour et bienvenue dans l'application du petit Prince.</p>
       </ion-item>
       <ion-list-header>
-        <ion-label>Dates importantes</ion-label>
+        <ion-label><h1><strong>Dates importantes</strong></h1></ion-label>
       </ion-list-header>
         <ion-item *ngFor="let date of datas.dates.reverse()">
             <ion-label>
-              <h2>{{toDate(date.date)}}</h2>
+              <h2><strong>{{toDate(date.date)}}</strong></h2>
               <h3>{{date.titre}}</h3>
-              <p>Classe {{date.classe}}</p>
+              <p *ngIf="date.classe==0">Public</p>
+              <p *ngIf="date.classe==this.login">Privée (Classe {{date.classe}})</p>
               <p>{{date.texte}}</p>
              </ion-label>
         </ion-item>
         <ion-list-header>
-          <ion-label>Contact</ion-label>
+          <ion-label><h1><strong>Contact</strong></h1></ion-label>
         </ion-list-header>
         <ion-item>
             <p>École le Petit Prince<br>

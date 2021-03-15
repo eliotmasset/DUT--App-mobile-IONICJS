@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AccueilPage } from './Accueil.page';
+import { IonicStorageModule } from '@ionic/storage';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { AccueilPageRoutingModule } from './Accueil-routing.module';
@@ -17,6 +18,7 @@ import { AccueilPageRoutingModule } from './Accueil-routing.module';
     HttpClientModule,
     ExploreContainerComponentModule,
     AccueilPageRoutingModule,
+    IonicStorageModule.forRoot()
   ],
   declarations: [AccueilPage]
 })

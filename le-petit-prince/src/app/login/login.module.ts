@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -17,7 +18,8 @@ import { LoginPage } from './login.page';
     IonicModule,
     HttpClientModule,
     ReactiveFormsModule,
-    LoginPageRoutingModule
+    LoginPageRoutingModule,
+    IonicStorageModule.forRoot()
   ],
   declarations: [LoginPage]
 })

@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { GaleriesPage } from './Galeries.page';
 import { HttpClientModule } from '@angular/common/http';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { GaleriesPageRoutingModule } from './Galeries-routing.module';
 
@@ -16,7 +17,8 @@ import { GaleriesPageRoutingModule } from './Galeries-routing.module';
     FormsModule,
     HttpClientModule,
     ExploreContainerComponentModule,
-    GaleriesPageRoutingModule
+    GaleriesPageRoutingModule,
+    IonicStorageModule.forRoot()
   ],
   declarations: [GaleriesPage]
 })
