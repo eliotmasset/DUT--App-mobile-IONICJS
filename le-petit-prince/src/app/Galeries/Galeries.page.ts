@@ -30,8 +30,21 @@ export class GaleriesPage {
       componentProps: { img: url },
       cssClass: 'img-modal'
       });
-      return await modal.present();
-     
+      return await modal.present();  
+  }
+
+  async refresh(e){
+    this.storage.get('login').then((valeur) => {
+      if(valeur=="")
+        this.router.navigate(['/']);
+      this.storage.get('mdp').then((mdp) => {
+        this.http.get('http://www.sebastien-thon.fr/cours/M4104Cip/projet/index.php?login='+valeur+'&mdp='+mdp)
+                        .subscribe((data) => {
+                          this.datas = data; 
+                          e.target.complete();
+        });
+      });
+    });
   }
 
   constructor(private router: Router,private storage: Storage,private http: HttpClient, public modalController: ModalController) {

@@ -7,6 +7,9 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-slides pager="true" [options]="slideOpts" *ngIf="datas">
     <ion-slide *ngFor="let galerie of datas.galeries">
       <h1>{{galerie.titre}}</h1>
