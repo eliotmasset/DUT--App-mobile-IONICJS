@@ -14,6 +14,8 @@ export class ArticlesPage {
   images:any;
   fav: boolean;
   favs: any;
+  in_search: any;
+  searchTerm : string;
 
   async refresh(e){
     this.storage.get('login').then((valeur) => {
@@ -34,6 +36,10 @@ export class ArticlesPage {
   }
 
   canBeDisplay(article) {
+    if(this.searchTerm=="")
+      return true;
+    if(this.in_search.indexOf(article)==-1)
+      return false;
     if(!this.fav)
       return true;
     else
@@ -42,6 +48,13 @@ export class ArticlesPage {
         return false;
       return true;
     }
+  }
+
+  filterList(evt) {
+    this.searchTerm = evt.srcElement.value;
+    this.in_search = this.datas.articles.filter(searchItem => {
+        return (searchItem.titre.toLowerCase().indexOf(this.searchTerm.toLowerCase()) != -1 || searchItem.texte.toLowerCase().indexOf(this.searchTerm.toLowerCase()) != -1);
+    });
   }
 
   add_tofavs(fav) {
@@ -65,6 +78,8 @@ export class ArticlesPage {
 
   constructor(private router: Router,private storage: Storage,private http: HttpClient) {
     this.favs=[];
+    this.in_search=[];
+    this.searchTerm = "";
     
     storage.get('favs').then((valeur) => {
       if(valeur!=null)
