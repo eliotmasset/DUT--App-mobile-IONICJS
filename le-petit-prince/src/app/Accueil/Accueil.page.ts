@@ -12,6 +12,8 @@ export class AccueilPage {
 
   datas:any;
   login:string;
+  prefersDark: any;
+  toggle: any;
 
   async refresh(e){
     this.storage.get('login').then((valeur) => {
@@ -40,8 +42,22 @@ export class AccueilPage {
     this.storage.clear();
     this.router.navigate(['/']);
   }
+  loadApp() {
+    this.checkToggle(this.prefersDark.matches);
+  }
+  checkToggle(shouldCheck) {
+    console.log(shouldCheck);
+    this.toggle.checked = shouldCheck;
+  }
+
+  darkmode(ev) {
+    document.body.classList.toggle('dark', !ev.srcElement.checked);
+  }
 
   constructor(private router: Router,private storage: Storage,private http: HttpClient) {
+    this.prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    this.prefersDark.addListener((e) => this.checkToggle(e.matches));
+
     storage.get('login').then((valeur) => {
       let regex = new RegExp(/classe([0-9]{1})/gm, 'i');
       if(valeur!="")

@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" onLoad="this.loadApp()">
   <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
@@ -40,6 +40,13 @@
                <em>Tél : 0412345678<br>
                Mail : contact@lepetitprince.fr</em></p>
         </ion-item>
+        <ion-item lines="full">
+          <ion-icon slot="start" name="moon"></ion-icon>
+          <ion-label>
+            Toggle Dark Theme
+          </ion-label>
+          <ion-toggle  (click)="this.darkmode($event)" id="themeToggle" slot="end"></ion-toggle>
+        </ion-item>
     </ion-list>
-    <ion-button (click)="this.deconnexion()" color="danger" expand="block">Deconnexion</ion-button>
+    <ion-button (click)="this.deconnexion($event)" color="danger" expand="block">Deconnexion</ion-button>
 </ion-content>
