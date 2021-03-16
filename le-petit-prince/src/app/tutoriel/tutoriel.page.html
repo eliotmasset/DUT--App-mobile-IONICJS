@@ -9,8 +9,11 @@
 <ion-content [fullscreen]="true">
   <ion-slides pager="true" [options]="slideOpts">
     <ion-slide>
-      <h1>Bienvenue</h1>
-      
+      <div class="slide">
+        <img src="./assets/icon/full.png" id="img-slide1"/>
+        <h1>Bienvenue</h1>
+        <p>Voici un tutoriel pour la prise en main de l'application <em>Le petit Prince</em></p>
+      </div>
     </ion-slide>
     <ion-slide>
       <h1>L'accueil</h1>
@@ -25,8 +28,7 @@
       
     </ion-slide>
     <ion-slide>
-      <h1>Débuter</h1><br>
-      <ion-button (click)="this.begin()" color="secondary" expand="block">Commencer</ion-button>
+      <ion-button (click)="this.begin()" color="secondary" expand="block">Commencer !</ion-button>
     </ion-slide>
   </ion-slides>
 </ion-content>

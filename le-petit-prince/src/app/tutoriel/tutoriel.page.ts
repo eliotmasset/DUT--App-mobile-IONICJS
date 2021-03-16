@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class TutorielPage implements OnInit {
   slideOpts = {
-    initialSlide: 1,
+    initialSlide: 0,
     speed: 400
   };
   constructor(private router: Router) { }
