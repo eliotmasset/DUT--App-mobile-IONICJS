@@ -37,17 +37,30 @@ export class ArticlesPage {
 
   canBeDisplay(article) {
     if(this.searchTerm=="")
-      return true;
-    if(this.in_search.indexOf(article)==-1)
-      return false;
-    if(!this.fav)
-      return true;
-    else
-    { 
-      if(this.favs.indexOf(article)==-1)
-        return false;
+    {
+      if(!this.fav)
+        return true;
+      else
+      { 
+        if(!this.isInFavs(article))
+          return false;
+        return true;
+      }
       return true;
     }
+    if(this.in_search.indexOf(article)!=-1)
+    {
+      if(!this.fav)
+        return true;
+      else
+      { 
+        if(!this.isInFavs(article))
+          return false;
+        return true;
+      }
+      return false;
+    }
+    return false;
   }
 
   filterList(evt) {
