@@ -18,25 +18,17 @@ ion-card{
 	margin-top:10px;
 	font-weight:bold;
 }
-:root {
-	--ion-color-favs: #fff129;
-	--ion-color-favs-rgb: 255,241,41;
-	--ion-color-favs-contrast: #000000;
-	--ion-color-favs-contrast-rgb: 0,0,0;
-	--ion-color-favs-shade: #fff23e;
-	--ion-color-favs-tint: #fff23e;
-  }
-  
-  .ion-color-favs {
-	--ion-color-base: var(--ion-color-favs);
-	--ion-color-base-rgb: var(--ion-color-favs-rgb);
-	--ion-color-contrast: var(--ion-color-favs-contrast);
-	--ion-color-contrast-rgb: var(--ion-color-favs-contrast-rgb);
-	--ion-color-shade: var(--ion-color-favs-shade);
-	--ion-color-tint: var(--ion-color-favs-tint);
-  }
 
-  ion-fab {
+.ion-color-favs {
+	--ion-color-base: var(--ion-color-primary);
+	--ion-color-base-rgb: var(--ion-color-primary-rgb);
+	--ion-color-contrast: var(--ion-color-primary-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-primary-contrast-rgb);
+	--ion-color-shade: var(--ion-color-primary-shade);
+	--ion-color-tint: var(--ion-color-primary-tint);
+}
+
+ion-fab {
 	position: fixed;
 	top:2.5px;
 	width: 50px;

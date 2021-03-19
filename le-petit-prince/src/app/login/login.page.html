@@ -24,7 +24,8 @@
         <ion-icon name="information-circle-outline"></ion-icon>{{ validation.message }}
       </div>
     </ng-container> <br>
-    <ion-checkbox slot="start" formControlName="remind" name="remind"></ion-checkbox>Se souvenir de moi  <br> <br>
-    <button ion-button type="submit" [disabled]="!user_group.valid" block>Login</button>
+    <div style="text-align: center;">
+      <ion-checkbox slot="start" formControlName="remind" name="remind"></ion-checkbox> Se souvenir de moi
+      <ion-button type="submit" [disabled]="!user_group.valid" id="btn-connexion">Se connecter</ion-button></div>
   </form>
 </ion-content>

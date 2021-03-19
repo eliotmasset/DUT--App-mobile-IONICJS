@@ -36,17 +36,19 @@
         <ion-item>
             <p>École le Petit Prince<br>
                1, rue des écoles<br>
-               13000 Saint Exupéry<br>
-               <em>Tél : 0412345678<br>
-               Mail : contact@lepetitprince.fr</em></p>
+               13000 Saint Exupéry
+             <br><br>
+               <em>Tél : <a href="tel:0412345678">0412345678</a><br>
+               Mail : <a href="mailto:contact@lepetitprince.fr">contact@lepetitprince.fr</a></em>
+             </p>
         </ion-item>
         <ion-item lines="full">
           <ion-icon slot="start" name="moon"></ion-icon>
           <ion-label>
-            Toggle Dark Theme
+            Mode sombre
           </ion-label>
           <ion-toggle  (click)="this.darkmode($event)" id="themeToggle" slot="end"></ion-toggle>
         </ion-item>
     </ion-list>
-    <ion-button (click)="this.deconnexion($event)" color="danger" expand="block">Deconnexion</ion-button>
+    <div style="text-align: center;"><ion-button (click)="this.deconnexion($event)" color="danger" id="btn-deconnexion">Deconnexion</ion-button></div>
 </ion-content>
