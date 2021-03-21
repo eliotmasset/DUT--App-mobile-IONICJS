@@ -2,6 +2,14 @@ ion-slides {
     height: 100%;  
 }
 
-#img-slide1{
+#img-slide1, .img-tuto{
 	max-width:80% !important;
+}
+
+.img-tuto{
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+#img-article{
+	height:280px;
 }
