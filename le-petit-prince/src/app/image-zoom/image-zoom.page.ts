@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FilesystemDirectory } from '@capacitor/core/dist/esm/core-plugin-definitions';
-import { Filesystem } from '@capacitor/core/dist/esm/web/filesystem';
 import { NavController, ModalController } from '@ionic/angular';
 import { NavParams } from '@ionic/angular';
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class ImageZoomPage implements OnInit {
 
   url:string;
 
-  constructor(navParams: NavParams, private nav:NavController, private modalCtrl:ModalController) { 
+  constructor(navParams: NavParams, private nav:NavController, private modalCtrl:ModalController, private transfer: FileTransfer, private file: File,public toastController: ToastController) { 
     this.url=navParams.get('img');
     console.log(this.url);
   }
@@ -22,27 +23,29 @@ export class ImageZoomPage implements OnInit {
   ngOnInit() {
   }
 
+  async toast(head,text)
+  {
+    const toast = await this.toastController.create({
+      header: head,
+      message: text,
+      position: 'bottom',
+      buttons: [ {
+          text: 'Fermer',
+          role: 'fermer',
+          handler: () => {}
+        }
+      ]
+    });
+    toast.present();
+  }
+
   async download() {
     // helper function
-    const convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
-      const reader = new FileReader;
-      reader.onerror = reject;
-      reader.onload = () => {
-        resolve(reader.result);
-      };
-    reader.readAsDataURL(blob);
-    });
-        // retrieve the image
-    const response = await fetch(this.url);
-    // convert to a Blob
-    const blob = await response.blob();
-    // convert to base64 data, which the Filesystem plugin requires
-    const base64Data = await convertBlobToBase64(blob) as string;
-          
-    const savedFile = await Filesystem.writeFile({
-      path: "/image.png",
-      data: base64Data,
-      directory: FilesystemDirectory.Data
+    const fileTransfer: FileTransferObject = this.transfer.create();
+    fileTransfer.download(this.url, this.file.externalRootDirectory + '/Download/' + 'image.png').then((entry) => {
+      this.toast("image.png","téléchargement réussie !");
+    }, (error) => {
+      this.toast("Erreur","échec du téléchargement à l'adresse : "+this.url);
     });
 
   }

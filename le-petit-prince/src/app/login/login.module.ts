@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IonicStorageModule } from '@ionic/storage';
+import { HTTP } from '@ionic-native/http/ngx';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -16,11 +16,11 @@ import { LoginPage } from './login.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    HttpClientModule,
     ReactiveFormsModule,
     LoginPageRoutingModule,
     IonicStorageModule.forRoot()
   ],
-  declarations: [LoginPage]
+  declarations: [LoginPage],
+  providers: [HTTP]
 })
 export class LoginPageModule {}

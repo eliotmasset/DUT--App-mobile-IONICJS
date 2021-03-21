@@ -6,6 +6,9 @@ import { IonicModule } from '@ionic/angular';
 
 import { ImageZoomPageRoutingModule } from './image-zoom-routing.module';
 
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+import { File } from '@ionic-native/file/ngx';
+
 import { ImageZoomPage } from './image-zoom.page';
 
 @NgModule({
@@ -15,6 +18,7 @@ import { ImageZoomPage } from './image-zoom.page';
     IonicModule,
     ImageZoomPageRoutingModule
   ],
-  declarations: [ImageZoomPage]
+  declarations: [ImageZoomPage],
+  providers: [FileTransfer, FileTransferObject, File]
 })
 export class ImageZoomPageModule {}

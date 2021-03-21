@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HTTP } from '@ionic-native/http/ngx';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
-import { exit } from 'process';
 
 @Component({
   selector: 'app-login',
@@ -53,16 +52,17 @@ export class LoginPage implements OnInit {
      user: this.user_group,
    });
 
-  constructor(private storage: Storage,private http: HttpClient,private router: Router,public toastController: ToastController) {
+  constructor(private storage: Storage,private http: HTTP,private router: Router,public toastController: ToastController) {
     storage.get('remind').then((remind) => {
+      console.log("log");
       if(remind==true)
         storage.get('login').then((login) => {
           storage.get('mdp').then((mdp) => {
             if(login!="" || mdp!="")
             {
               let url = "http://www.sebastien-thon.fr/cours/M4104Cip/projet/index.php?connexion&login="+login+"&mdp="+mdp;
-              this.http.get(url).subscribe((data) => {
-                data["resultat"]!= undefined ? this.auth(remind, login, mdp) : this.toast("Erreur","Les identifiants ont été modifiés depuis la dernière connexion");
+              this.http.get(url,{},{}).then((data) => {
+                JSON.parse(data.data).resultat!= undefined ? this.auth(remind, login, mdp, true) : this.toast("Erreur","Les identifiants ont été modifiés depuis la dernière connexion");
               });
             }
           });
@@ -73,12 +73,15 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  auth(remind, login, mdp)
+  auth(remind, login, mdp, noTuto)
   {
     this.storage.set('remind', remind);
     this.storage.set('login', login);
     this.storage.set('mdp',mdp);
-    this.router.navigate(['/tutoriel']);
+    if(noTuto)
+      this.router.navigate(['/tabs']);
+    else
+      this.router.navigate(['/tutoriel']);
   }
 
   async toast(head,text)
@@ -99,9 +102,9 @@ export class LoginPage implements OnInit {
 
   async loging() {
     let url = "http://www.sebastien-thon.fr/cours/M4104Cip/projet/index.php?connexion&login="+this.user_group.get("login").value+"&mdp="+this.user_group.get("mdp").value;
-    this.http.get(url)
-                   .subscribe((data) => {
-                    data["resultat"]!= undefined ? this.auth(this.user_group.get("remind").value,this.user_group.get("login").value,this.user_group.get("mdp").value) : this.toast("Erreur","Login ou mot de passe incorrect !");
+    this.http.get(url,{},{})
+                   .then((data) => {
+                    JSON.parse(data.data).resultat != undefined ? this.auth(this.user_group.get("remind").value,this.user_group.get("login").value,this.user_group.get("mdp").value,false) : this.toast("Erreur","Login ou mot de passe incorrect !");
     });
   }
 
