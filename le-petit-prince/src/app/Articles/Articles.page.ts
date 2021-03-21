@@ -16,6 +16,12 @@ export class ArticlesPage {
   favs: any;
   in_search: any;
   searchTerm : string;
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400,
+    zoom:true,
+    passiveListeners: false,
+  };
 
   async refresh(e){
     this.storage.get('login').then((valeur) => {

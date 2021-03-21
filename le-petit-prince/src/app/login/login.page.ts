@@ -53,6 +53,10 @@ export class LoginPage implements OnInit {
    });
 
   constructor(private storage: Storage,private http: HTTP,private router: Router,public toastController: ToastController) {
+    
+    storage.get('darkmode').then((value) => {
+      document.body.classList.toggle('dark', value);
+    });
     storage.get('remind').then((remind) => {
       console.log("log");
       if(remind==true)

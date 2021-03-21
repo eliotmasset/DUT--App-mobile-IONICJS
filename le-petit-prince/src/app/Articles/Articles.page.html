@@ -19,7 +19,13 @@
   <ion-searchbar id="search_articles" placeholder="Rechercher un article" (ionInput)="filterList($event)" animated></ion-searchbar>
   <span *ngFor="let article of datas.articles">
     <ion-card *ngIf="this.canBeDisplay(article)">
-      <div class="img-container"><img *ngIf="article.photos[0]!=undefined" src="http://www.sebastien-thon.fr/cours/M4104Cip/projet/images/{{article.photos[0].image}}" /></div>
+      <div class="img-container">
+        <ion-slides pager="true" [options]="slideOpts">
+          <ion-slide *ngFor="let photo of article.photos">
+            <img src="http://www.sebastien-thon.fr/cours/M4104Cip/projet/images/{{photo.image}}" />
+          </ion-slide>
+        </ion-slides>
+      </div>
       <ion-card-header>
         <ion-card-subtitle>{{article.categorie}}</ion-card-subtitle>
         <ion-card-title>{{article.titre}}</ion-card-title>

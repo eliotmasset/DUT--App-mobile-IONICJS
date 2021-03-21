@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
+import { HTTP } from '@ionic-native/http/ngx';
 
 @Component({
   selector: 'app-Accueil',
@@ -14,6 +14,7 @@ export class AccueilPage {
   login:string;
   prefersDark: any;
   toggle: any;
+  isDark: boolean;
 
   async refresh(e){
     this.storage.get('login').then((valeur) => {
@@ -23,9 +24,9 @@ export class AccueilPage {
       else
         this.router.navigate(['/']);
       this.storage.get('mdp').then((mdp) => {
-        this.http.get('http://www.sebastien-thon.fr/cours/M4104Cip/projet/index.php?login='+valeur+'&mdp='+mdp)
-                        .subscribe((data) => {
-                          this.datas = data; 
+        this.http.get('http://www.sebastien-thon.fr/cours/M4104Cip/projet/index.php?login='+valeur+'&mdp='+mdp,{},{})
+                        .then((data) => {
+                          this.datas = JSON.parse(data.data); 
                           e.target.complete();
         });
       });
@@ -42,21 +43,20 @@ export class AccueilPage {
     this.storage.clear();
     this.router.navigate(['/']);
   }
-  loadApp() {
-    this.checkToggle(this.prefersDark.matches);
-  }
-  checkToggle(shouldCheck) {
-    console.log(shouldCheck);
-    this.toggle.checked = shouldCheck;
-  }
 
   darkmode(ev) {
-    document.body.classList.toggle('dark', !ev.srcElement.checked);
+    this.isDark=!ev.srcElement.checked;
+    this.storage.set('darkmode', this.isDark);
+    document.body.classList.toggle('dark', this.isDark);
   }
 
-  constructor(private router: Router,private storage: Storage,private http: HttpClient) {
+  constructor(private router: Router,private storage: Storage,private http: HTTP) {
     this.prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-    this.prefersDark.addListener((e) => this.checkToggle(e.matches));
+    this.isDark=document.body.classList.contains('dark');
+    storage.get('darkmode').then((value) => {
+      this.isDark=value;
+      document.body.classList.toggle('dark', this.isDark);
+    });
 
     storage.get('login').then((valeur) => {
       let regex = new RegExp(/classe([0-9]{1})/gm, 'i');
@@ -65,9 +65,9 @@ export class AccueilPage {
       else
         this.router.navigate(['/']);
       storage.get('mdp').then((mdp) => {
-        this.http.get('http://www.sebastien-thon.fr/cours/M4104Cip/projet/index.php?login='+valeur+'&mdp='+mdp)
-                        .subscribe((data) => {
-                          this.datas = data;
+        this.http.get('http://www.sebastien-thon.fr/cours/M4104Cip/projet/index.php?login='+valeur+'&mdp='+mdp,{},{})
+                        .then((data) => {
+                          this.datas = JSON.parse(data.data);
         });
       });
     });

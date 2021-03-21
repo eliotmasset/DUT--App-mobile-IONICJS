@@ -47,7 +47,8 @@
           <ion-label>
             Mode sombre
           </ion-label>
-          <ion-toggle  (click)="this.darkmode($event)" id="themeToggle" slot="end"></ion-toggle>
+          <ion-toggle *ngIf="isDark" checked (click)="this.darkmode($event)" id="themeToggle" slot="end"></ion-toggle>
+          <ion-toggle *ngIf="!isDark" (click)="this.darkmode($event)" id="themeToggle" slot="end"></ion-toggle>
         </ion-item>
     </ion-list>
     <div style="text-align: center;"><ion-button (click)="this.deconnexion($event)" color="danger" id="btn-deconnexion">Deconnexion</ion-button></div>
