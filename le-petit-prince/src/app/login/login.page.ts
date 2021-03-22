@@ -82,10 +82,20 @@ export class LoginPage implements OnInit {
     this.storage.set('remind', remind);
     this.storage.set('login', login);
     this.storage.set('mdp',mdp);
-    if(noTuto)
-      this.router.navigate(['/tabs']);
-    else
+    this.storage.get('checkFirstTime').then((valeur) => {
+      if(valeur==true)
+      {
+        this.router.navigate(['/tabs']);
+      }
+      else
+      {
+        this.router.navigate(['/tutoriel']);
+        this.storage.set('checkFirstTime',true);
+      }
+    }).catch(e => {
       this.router.navigate(['/tutoriel']);
+      this.storage.set('checkFirstTime',true);
+      });
   }
 
   async toast(head,text)

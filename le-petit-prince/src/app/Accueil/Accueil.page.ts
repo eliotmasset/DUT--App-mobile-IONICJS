@@ -40,7 +40,8 @@ export class AccueilPage {
 
   async deconnexion()
   { 
-    this.storage.clear();
+    this.storage.remove('mdp');
+    this.storage.remove('login');
     this.router.navigate(['/']);
   }
 
