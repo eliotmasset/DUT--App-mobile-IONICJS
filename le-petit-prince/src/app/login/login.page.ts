@@ -66,7 +66,7 @@ export class LoginPage implements OnInit {
             {
               let url = "http://www.sebastien-thon.fr/cours/M4104Cip/projet/index.php?connexion&login="+login+"&mdp="+mdp;
               this.http.get(url,{},{}).then((data) => {
-                JSON.parse(data.data).resultat!= undefined ? this.auth(remind, login, mdp, true) : this.toast("Erreur","Vous vous êtes déconnecté lors de la session précédante");
+                JSON.parse(data.data).resultat!= undefined ? this.auth(remind, login, mdp, true) : this.toast("Erreur","Vous vous êtes déconnecté lors de la session précédente");
               });
             }
           });
