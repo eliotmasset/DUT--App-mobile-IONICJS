@@ -42,6 +42,7 @@ export class AccueilPage {
   { 
     this.storage.remove('mdp');
     this.storage.remove('login');
+    this.storage.remove('favs');
     this.router.navigate(['/']);
   }
 
