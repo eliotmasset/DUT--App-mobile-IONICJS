@@ -14,9 +14,11 @@ import { ToastController } from '@ionic/angular';
 export class ImageZoomPage implements OnInit {
 
   url:string;
+  name:string;
 
   constructor(navParams: NavParams, private nav:NavController, private modalCtrl:ModalController, private transfer: FileTransfer, private file: File,public toastController: ToastController) { 
     this.url=navParams.get('img');
+    this.name=navParams.get('name');
     console.log(this.url);
   }
 
@@ -42,10 +44,10 @@ export class ImageZoomPage implements OnInit {
   async download() {
     // helper function
     const fileTransfer: FileTransferObject = this.transfer.create();
-    fileTransfer.download(this.url, this.file.externalRootDirectory + '/Download/' + 'image.png').then((entry) => {
+    fileTransfer.download(this.url, this.file.externalRootDirectory + '/Download/' + this.name).then((entry) => {
       this.toast("image.png","téléchargement réussie !");
     }, (error) => {
-      this.toast("Erreur","échec du téléchargement à l'adresse : "+this.url);
+      this.toast("Erreur","échec du téléchargement à l'adresse : " + this.file.externalRootDirectory + '/Download/');
     });
 
   }

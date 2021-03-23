@@ -24,10 +24,11 @@ export class GaleriesPage {
 
   async zoom(url)
   {
+    var name=url;
     url="http://www.sebastien-thon.fr/cours/M4104Cip/projet/images/"+url;
     const modal = await this.modalController.create({
       component: ImageZoomPage,
-      componentProps: { img: url },
+      componentProps: { img: url, name:  name},
       cssClass: 'img-modal'
       });
       return await modal.present();  
