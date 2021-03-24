@@ -44,10 +44,10 @@ export class ImageZoomPage implements OnInit {
   async download() {
     // helper function
     const fileTransfer: FileTransferObject = this.transfer.create();
-    fileTransfer.download(this.url, this.file.externalRootDirectory + 'Download/' + this.name).then((entry) => {
-      this.toast("image.png","téléchargement réussie !");
+    fileTransfer.download(this.url, this.file.externalRootDirectory + this.name).then((entry) => {
+      this.toast(this.name,"téléchargement réussie !");
     }, (error) => {
-      this.toast("Erreur","échec du téléchargement à l'adresse : " + this.file.externalRootDirectory + 'Download/');
+      this.toast("Erreur","échec du téléchargement à l'adresse : " + this.file.externalRootDirectory + this.name);
     });
 
   }
