@@ -44,7 +44,7 @@ export class ImageZoomPage implements OnInit {
   async download() {
     // helper function
     const fileTransfer: FileTransferObject = this.transfer.create();
-    fileTransfer.download(this.url, this.file.externalRootDirectory + 'Download/' + this.name).then((entry) => {
+    fileTransfer.download(this.url, this.file.dataDirectory + 'Download/' + this.name).then((entry) => {
       this.toast(this.name,"téléchargement réussie !");
     }, (error) => {
       this.toast("Erreur",error.exception);
